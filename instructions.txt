@@ -1,0 +1,15 @@
+Before running the makefile you must run:
+module swap PrgEnv-intel PrgEnv-gnu
+module swap craype-haswell craype-mic-knl
+module load upcxx
+
+To run:
+
+combined: salloc -N 1 -A mp215 -t 10:00 -q debug --qos=interactive -C knl srun -N 1 -n 68 ./bloom_dist_test /project/projectdirs/mp309/cs267-spr2020/hw3-datasets/test.txt verbose
+
+salloc -N 1 -A mp215 -t 10:00 -q debug --qos=interactive -C knl srun -N 1 -n 68 ./bloom_dist_test $SCRATCH/my_datasets/test.txt verbose
+
+
+
+1) salloc -N 1 -A mp309 -t 10:00 -q debug --qos=interactive -C knl
+2) srun -n 1 -c 272 --cpu_bind=cores ./bloom_dist_test /project/projectdirs/mp309/cs267-spr2020/hw3-datasets/smaller/small.txt verbose test
