@@ -1,0 +1,17 @@
+#!/bin/bash -l
+#SBATCH -N 1
+#SBATCH -c 10
+#SBATCH -G 1
+#SBATCH -C gpu
+#SBATCH -t 1:00
+#SBATCH -J cuda_compile
+#SBATCH -o cuda_output.txt
+#SBATCH -p debug
+#SBATCH -A mp309
+
+echo "compiling cuda_test"
+source gpu_modules.sh
+make cuda_test
+make cuda_mem
+make cuda_run
+echo "compiled sucessfully"

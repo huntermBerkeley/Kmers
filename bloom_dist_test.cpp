@@ -188,8 +188,6 @@ int main(int argc, char** argv) {
     }
 
 
-
-
     auto total_end = std::chrono::high_resolution_clock::now();
     insert_time = std::chrono::duration<double>(total_end - total_start).count();
 

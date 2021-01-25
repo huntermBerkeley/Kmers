@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
 
     if (upcxx::rank_me() == upcxx::rank_n()-1){
 
-      std::cout << "Starting program"  <<  std::endl;
+      std::cout << "Starting program with "  << upcxx::rank_n() << " processes." <<  std::endl;
 
     }
 

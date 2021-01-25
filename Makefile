@@ -16,6 +16,21 @@ bloom_dist: bloom_dist_test.cpp bloom.hpp MurmurHash3.cpp bloom_dist.hpp butil.h
 counter: counter_test.cpp counter.hpp
 	upcxx counter_test.cpp -o counter_test -std=c++17  -O3 -lstdc++ -march=knl
 
+cuda_test:  cuda_test.cpp
+	upcxx cuda_test.cpp -o cuda_test -std=c++17  -O3 -lstdc++
+
+cuda_mem: cuda_mem.cpp
+	upcxx cuda_mem.cpp -o cuda_mem -std=c++17  -O3 -lstdc++
+
+
+cuda_run: cuda_run.cpp test_kernels.hpp test_kernels.o
+	upcxx cuda_run.cpp test_kernels.o -o cuda_run -std=c++17  -O3 -lstdc++ -lcuda
+
+test_kernels.o:
+	nvcc -c test_kernels.cu -O3 -o test_kernels.o
+
+
+
 clean:
 	@rm -fv bloom_test
 	@rm -fv bloom_dist_test
